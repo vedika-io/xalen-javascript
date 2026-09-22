@@ -1,57 +1,20 @@
-# xalen-sdk
+# Xalen JavaScript SDK (legacy snapshot)
 
-The official JavaScript/TypeScript SDK for the XALEN AI API. Drop-in replacement for the OpenAI SDK.
+This repository is retained as historical source for an early Xalen API client. It is not the canonical source for current `xalen-sdk` releases and should not be used as release evidence.
 
-## Installation
+The maintained client lives in Xalen's private product monorepo. Current installation and API guidance belongs at [xalen.io/docs](https://xalen.io/docs).
 
-```bash
-npm install xalen-sdk
-```
+## Product boundary
 
-## Quick Start
+- **Xalen** is the parent company's AI platform.
+- **Vedika** is Xalen Technology's astrology intelligence product and has its own API and SDK namespace.
+- **XALEN Ephemeris** is a shared calculation engine. It is not this API client.
 
-```typescript
-import XALEN from 'xalen-sdk';
+For Vedika integrations, use the official packages listed on the [Vedika GitHub profile](https://github.com/vedika-io).
 
-const client = new XALEN({ apiKey: 'xln_live_your_key_here' });
+## Status
 
-const response = await client.chat.completions.create({
-  model: 'vedika-standard',
-  messages: [{ role: 'user', content: 'What is Shakata Yoga?' }],
-});
-
-console.log(response.choices[0].message.content);
-```
-
-## Streaming
-
-```typescript
-const stream = await client.chat.completions.create({
-  model: 'vedika-fast',
-  messages: [{ role: 'user', content: 'Analyze planetary transits' }],
-  stream: true,
-});
-
-for await (const chunk of stream) {
-  process.stdout.write(chunk.choices[0]?.delta?.content || '');
-}
-```
-
-## Environment Variable
-
-Set `XALEN_API_KEY` to avoid passing the key explicitly:
-
-```bash
-export XALEN_API_KEY=xln_live_your_key_here
-```
-
-## API Base URL
-
-Default: `https://api.xalen.io/v1`
-
-## Documentation
-
-Full API docs: [xalen.io/docs](https://xalen.io/docs)
+Historical and unsupported. Issues and pull requests are not accepted here.
 
 ## License
 
